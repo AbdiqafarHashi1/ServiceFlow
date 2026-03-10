@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ServiceFlow
+
+ServiceFlow is a responsive operations dashboard for visa and travel agencies. It provides two clear workspaces:
+
+- **Worker Workspace** for day-to-day execution (leads, cases, and personal queue).
+- **Owner Workspace** for business oversight (revenue, staff performance, and reporting).
+
+The app is built with **Next.js App Router**, **TypeScript**, and **Tailwind CSS**, and ships with rich mock data for demo workflows.
+
+## Core Features
+
+### Workspace-aware shell
+- Persistent top shell with:
+  - Workspace badge (**Worker Workspace** / **Owner Workspace**)
+  - Page title + short description
+  - User identity area
+- Sidebar with a stronger active state:
+  - brighter text
+  - stronger border/background
+  - clear selected-page emphasis
+
+### Workspace switcher (demo-friendly)
+- A visible **Worker / Owner** switcher is available in the header.
+- Switching workspaces keeps routing behavior consistent by mapping equivalent pages where possible:
+  - `/dashboard` ↔ `/owner-dashboard`
+  - shared routes like `/leads`, `/cases`, `/settings` stay on the same route
+  - owner-only pages fall back to `/dashboard` when switching to worker
+
+### Distinct owner pages
+- **Revenue (`/revenue`)** includes revenue-focused totals and collections views.
+- **Staff Performance (`/staff-performance`)** includes team KPIs and staff ranking tables.
+- **Reports (`/reports`)** is a true report hub with report section links and previews.
+
+### Corrected route map
+The primary app routes are:
+
+- `/dashboard`
+- `/owner-dashboard`
+- `/revenue`
+- `/leads`
+- `/cases`
+- `/staff-performance`
+- `/reports`
+- `/settings`
+
+## Tech Stack
+
+- **Next.js 15** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+
+## Project Structure
+
+```text
+src/
+  app/
+    (app)/
+      dashboard/
+      owner-dashboard/
+      revenue/
+      leads/
+      cases/
+      staff-performance/
+      reports/
+      settings/
+    (auth)/
+      login/
+  components/
+    app-shell.tsx
+    ui.tsx
+  lib/
+    navigation.ts
+    mock-data.ts
+    auth.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Run in development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3) Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### 4) Run production server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Demo identity / environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app includes demo defaults in `src/lib/auth.ts` and can read:
 
-## Deploy on Vercel
+- `NEXT_PUBLIC_DEMO_USER_ID`
+- `NEXT_PUBLIC_DEMO_USER_NAME`
+- `NEXT_PUBLIC_DEMO_USER_ROLE`
+- `NEXT_PUBLIC_DEMO_ORG_ID`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If these are not set, the app uses built-in demo values.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## UX Notes
+
+- Navigation clarity was intentionally improved without changing the overall visual theme.
+- Revenue, Staff Performance, and Reports now render unique content and purpose-specific KPIs.
+- Navigation item keys are stable IDs (not duplicated hrefs), preventing duplicate key warnings.
+
+## Quality Checks
+
+Run the following before shipping:
+
+```bash
+npm run lint
+npm run build
+```
+
+## License
+
+Internal/demo project. Add your own license policy before public distribution.

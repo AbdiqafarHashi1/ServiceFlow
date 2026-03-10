@@ -248,3 +248,24 @@ export const reportsData = {
   staffPerformance: [['Sarah Khan', 34, 4], ['Nadia Ibrahim', 29, 2], ['Ravi Patel', 26, 5]],
   overdueFollowUps: [['Ahmed Hassan', 'Today'], ['Rahul Mehta', 'Today'], ['Fatima Ali', 'Yesterday']],
 } as const;
+
+export const revenueKpis = [
+  { label: 'Revenue Today', value: '$6,240' },
+  { label: 'Revenue This Week', value: '$32,880' },
+  { label: 'Revenue This Month', value: '$118,300' },
+  { label: 'Outstanding Invoices', value: '$46,950' },
+  { label: 'Collected Payments', value: '$71,350' },
+];
+
+export const staffPerformanceKpis = [
+  { label: 'Cases Completed', value: 89 },
+  { label: 'Overdue Items', value: 11 },
+  { label: 'Payments Collected', value: '$18,440' },
+  { label: 'Lead Conversions', value: '36.4%' },
+];
+
+export const staffRanking = [
+  ['Sarah Khan', 34, 4, '$7,150', '42%'],
+  ['Nadia Ibrahim', 29, 2, '$6,420', '39%'],
+  ['Ravi Patel', 26, 5, '$4,870', '28%'],
+];

@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { KpiCard, MiniList, Panel, PriorityBadge, StatusBadge } from '@/components/ui';
 import { workerCases, workerKpis, workerSecondary } from '@/lib/mock-data';
@@ -7,8 +6,6 @@ const actions = ['Call client', 'Add note', 'Upload document', 'Move status', 'C
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
-  if (user.role !== 'staff') redirect('/owner-dashboard');
-
   return (
     <div className="space-y-5">
       <section className="rounded-2xl border border-blue-400/20 bg-[#0b1735]/80 p-6">
