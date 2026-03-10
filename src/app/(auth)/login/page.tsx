@@ -1,0 +1,1 @@
+export default function LoginPage() { return <main className="flex min-h-screen items-center justify-center"><div className="w-full max-w-md rounded-xl border border-zinc-800 bg-zinc-900 p-6"><h1 className="text-2xl font-semibold">ServiceFlow Login</h1><p className="mt-2 text-sm text-zinc-400">Use Supabase auth providers in production.</p></div></main>; }
