@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { KpiCard, MiniList, Panel, SparkBars, StatusBadge } from '@/components/ui';
 import {
@@ -17,8 +16,6 @@ import {
 
 export default async function OwnerDashboardPage() {
   const user = await getCurrentUser();
-  if (user.role === 'staff') redirect('/dashboard');
-
   return (
     <div className="space-y-5">
       <section className="rounded-2xl border border-orange-400/20 bg-[#2b140a]/80 p-6 shadow-2xl backdrop-blur">
